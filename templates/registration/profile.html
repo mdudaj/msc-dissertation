@@ -1,0 +1,25 @@
+{% extends "app/base_page.html" %}
+
+{% block title_page %}Profile{% endblock %}
+{% block shell_title %}Profile{% endblock %}
+{% block breadcrumbs %}
+  <a href="{% url 'dashboard' %}">Dashboard</a>
+  <span aria-hidden="true">/</span>
+  <span>Profile</span>
+{% endblock %}
+
+{% block content %}
+  <div class="vf-page__grid kisomo-page">
+    <section class="kisomo-object-header">
+      <div>
+        <p class="kisomo-eyebrow">Account</p>
+        <h1>Profile</h1>
+        <p>Keep your account details aligned with research attribution records.</p>
+      </div>
+    </section>
+    <section class="kisomo-card kisomo-card--narrow">
+      <h2>{{ request.user.get_full_name|default:request.user.email }}</h2>
+      <p>{{ request.user.email }}</p>
+    </section>
+  </div>
+{% endblock %}

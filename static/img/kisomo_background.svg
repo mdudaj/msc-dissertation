@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024" role="img" aria-labelledby="title desc">
+  <title id="title">Kisomo clean vector logo</title>
+  <desc id="desc">Scalable Kisomo logo with a prominent K monogram, open book, AI circuit paths, and curriculum icons.</desc>
+  <defs>
+    <linearGradient id="kisomoGrad" x1="360" y1="200" x2="1120" y2="720" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6F8FA8"/>
+      <stop offset="0.52" stop-color="#7CA8A8"/>
+      <stop offset="1" stop-color="#8CB897"/>
+    </linearGradient>
+    <linearGradient id="bookGrad" x1="460" y1="535" x2="1060" y2="650" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6F8FA8"/>
+      <stop offset="1" stop-color="#8CB897"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="7" stdDeviation="6" flood-color="#06314A" flood-opacity="0.04"/>
+    </filter>
+  </defs>
+
+  <g id="kisomo-logo" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.28">
+    <g id="symbol" filter="url(#softShadow)">
+      <!-- Open book -->
+      <path id="book-left-cover" d="M465 612 C560 570 650 575 760 640 L760 690 C655 635 560 624 460 668 Z"
+            fill="#6F8FA8" fill-opacity="0.2" stroke="#6B8799" stroke-width="7"/>
+      <path id="book-right-cover" d="M760 640 C872 575 968 570 1070 612 L1075 668 C968 624 865 635 760 690 Z"
+            fill="#8CB897" fill-opacity="0.2" stroke="#6B8799" stroke-width="7"/>
+      <path id="book-left-page" d="M500 580 C590 542 675 554 760 612 L760 650 C670 600 585 592 500 630 Z"
+            fill="#FFFFFF" fill-opacity="0.6" stroke="#6F8FA8" stroke-width="5"/>
+      <path id="book-right-page" d="M760 612 C850 554 940 542 1035 580 L1035 630 C938 592 850 600 760 650 Z"
+            fill="#FFFFFF" fill-opacity="0.6" stroke="#8CB897" stroke-width="5"/>
+      <path id="book-center-fold" d="M760 610 L760 690" stroke="#6B8799" stroke-width="5" opacity="0.20"/>
+
+      <!-- Big K monogram -->
+      <path id="k-stem" d="M705 220 L705 585" stroke="url(#kisomoGrad)" stroke-width="64"/>
+      <path id="k-upper-arm" d="M725 405 L925 225" stroke="url(#kisomoGrad)" stroke-width="64"/>
+      <path id="k-lower-arm" d="M725 424 L930 590" stroke="url(#kisomoGrad)" stroke-width="64"/>
+      <path id="k-inner-cut" d="M725 405 L865 555" stroke="#FFFFFF" stroke-width="18" opacity="0.28"/>
+
+      <!-- AI circuit lines on K -->
+      <g id="editable-circuit-strokes" stroke="#FFFFFF" stroke-width="9" opacity="0.22">
+        <path d="M705 265 L650 265 L650 318"/>
+        <path d="M705 330 L615 330 L588 356"/>
+        <path d="M705 396 L642 396 L642 452"/>
+        <path d="M724 455 L795 455 L836 505"/>
+        <path d="M765 380 L833 345 L890 280"/>
+        <path d="M758 498 L835 542"/>
+      </g>
+      <g id="circuit-nodes" fill="#FFFFFF" stroke="#6B8799" stroke-width="3" opacity="0.22">
+        <circle cx="650" cy="265" r="12"/><circle cx="650" cy="318" r="12"/><circle cx="588" cy="356" r="12"/>
+        <circle cx="642" cy="452" r="12"/><circle cx="795" cy="455" r="12"/><circle cx="836" cy="505" r="12"/>
+        <circle cx="833" cy="345" r="12"/><circle cx="890" cy="280" r="12"/><circle cx="835" cy="542" r="12"/>
+      </g>
+
+      <!-- Curriculum icons -->
+      <g id="curriculum-icons" stroke="#6B8799" stroke-width="7" opacity="0.22">
+        <!-- atom -->
+        <g id="atom-icon" transform="translate(548 225)">
+          <circle cx="0" cy="0" r="9" fill="#8CB897" stroke="none"/>
+          <ellipse cx="0" cy="0" rx="54" ry="18" transform="rotate(0)"/>
+          <ellipse cx="0" cy="0" rx="54" ry="18" transform="rotate(60)"/>
+          <ellipse cx="0" cy="0" rx="54" ry="18" transform="rotate(-60)"/>
+        </g>
+        <!-- graduation cap -->
+        <g id="cap-icon" transform="translate(555 330)">
+          <path d="M-70 0 L0 -34 L72 0 L0 34 Z" fill="#6F8FA8" fill-opacity="0.22"/>
+          <path d="M-38 18 L-38 52 Q0 76 38 52 L38 18"/>
+          <path d="M70 4 L70 58"/>
+          <circle cx="70" cy="63" r="8" fill="#8CB897"/>
+        </g>
+        <!-- microscope -->
+        <g id="microscope-icon" transform="translate(1035 365)">
+          <path d="M-15 -60 L35 -35"/>
+          <path d="M25 -40 L5 0 Q-5 32 -50 45"/>
+          <path d="M-44 45 L30 45"/>
+          <path d="M-62 82 L58 82"/>
+          <path d="M-30 45 Q-10 78 35 82"/>
+          <rect x="-22" y="-75" width="54" height="22" rx="5" transform="rotate(27)" fill="#FFFFFF" fill-opacity="0.22"/>
+        </g>
+        <!-- sigma -->
+        <text id="sigma-icon" x="950" y="300" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="800" fill="#8CB897" stroke="none">Σ</text>
+      </g>
+    </g>
+
+    <!-- Wordmark -->
+    <g id="wordmark" opacity="0.16">
+      <text x="768" y="815" text-anchor="middle" font-family="Montserrat, Poppins, Arial, Helvetica, sans-serif"
+            font-size="118" font-weight="800" letter-spacing="-5" fill="url(#kisomoGrad)" stroke="#6B8799" stroke-width="0">
+        Kisomo
+      </text>
+    </g>
+  </g>
+</svg>

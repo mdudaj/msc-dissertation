@@ -1,0 +1,20 @@
+{
+  "features": [
+    {
+      "id": "feat-000",
+      "name": "Baseline Harness And Google OAuth",
+      "description": "A cookiecutter-style Django/Viewflow harness with custom email users, Google OAuth sign-in, Kisomo auth visuals, separated design-system CSS, and repeatable local verification.",
+      "dependencies": [],
+      "status": "done",
+      "evidence": "Django scaffold, apps.users, auth templates, Kisomo-owned authenticated shell, static/dissertation CSS, image exports, init script, and preview helper are present. Verified with ./init.sh, python manage.py migrate --noinput, python manage.py test apps.users, python scripts/validate_json.py, a 200 OK response from /accounts/login/ on the local dev server, and a 302 Google OAuth redirect from /accounts/google/login/."
+    },
+    {
+      "id": "feat-001",
+      "name": "Reproducible Topic Brief Run",
+      "description": "Restore the reviewed curriculum/topic-brief run workflow with preserved manifests and outputs.",
+      "dependencies": ["feat-000"],
+      "status": "blocked-review",
+      "evidence": "Held for user review per rebuild plan."
+    }
+  ]
+}

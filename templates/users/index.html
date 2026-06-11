@@ -1,0 +1,75 @@
+{% extends "app/base_page.html" %}
+
+{% block title_page %}Users &amp; Roles{% endblock %}
+{% block shell_title %}Users &amp; Roles{% endblock %}
+{% block breadcrumbs %}
+  <a href="{% url 'dashboard' %}">Dashboard</a>
+  <span aria-hidden="true">/</span>
+  <span>Users &amp; Roles</span>
+{% endblock %}
+
+{% block content %}
+  <div class="kisomo-page">
+    <section class="kisomo-object-header">
+      <div>
+        <p class="kisomo-eyebrow">Configuration</p>
+        <h1>Users &amp; Roles</h1>
+        <p>Manage research operators, evaluators, and invite-based access.</p>
+      </div>
+      {% if request.user.is_superuser %}
+        <a class="kisomo-button kisomo-button--header" href="{% url 'invite-new' %}">Invite User</a>
+      {% endif %}
+    </section>
+
+    <section class="kisomo-card-grid kisomo-card-grid--two" aria-label="User management summary">
+      <article class="kisomo-card">
+        <h2>Local Accounts</h2>
+        <p>{{ user_count }} active account{{ user_count|pluralize }} available in this harness.</p>
+      </article>
+      <article class="kisomo-card">
+        <h2>Pending Invites</h2>
+        <p>{{ pending_invite_count }} invitation{{ pending_invite_count|pluralize }} waiting for account creation.</p>
+      </article>
+    </section>
+
+    <section class="kisomo-card kisomo-table-card">
+      <h2>Roles</h2>
+      <div class="kisomo-role-list">
+        {% for role in roles %}
+          <article>
+            <h3>{{ role.label }}</h3>
+            <p>{{ role.description }}</p>
+          </article>
+        {% endfor %}
+      </div>
+    </section>
+
+    <section class="kisomo-card kisomo-table-card">
+      <h2>Recent Users</h2>
+      <table class="kisomo-table">
+        <thead>
+          <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Staff</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for user in users %}
+            <tr>
+              <td>{{ user.email }}</td>
+              <td>{{ user.get_full_name|default:"-" }}</td>
+              <td>{% if user.is_active %}Active{% else %}Disabled{% endif %}</td>
+              <td>{% if user.is_staff %}Yes{% else %}No{% endif %}</td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="4">No users yet.</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  </div>
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends "viewflow/base.html" %}
+{% load static %}
+
+{% block page_title %}Dashboard{% endblock %}
+{% block title %}Kisomo | {% block title_page %}Dashboard{% endblock %}{% endblock %}
+
+{% block favicon %}
+  <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+{% endblock %}
+
+{% block extrahead %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'dissertation/ui/tokens.css' %}" data-turbo-track="reload">
+  <link rel="stylesheet" href="{% static 'dissertation/ui/components.css' %}" data-turbo-track="reload">
+  <link rel="stylesheet" href="{% static 'dissertation/ui/authenticated.css' %}" data-turbo-track="reload">
+{% endblock %}
+
+{% block js %}
+  {{ block.super }}
+  <script src="{% static 'dissertation/ui/shell.js' %}" defer data-turbo-track="reload"></script>
+{% endblock %}
+
+{% block body %}
+  <div class="kisomo-shell">
+    <aside class="kisomo-shell__sidebar" aria-label="Primary navigation">
+      <a class="kisomo-shell__brand" href="{% url 'dashboard' %}">
+        <img src="{% static 'img/kisomo-brand.png' %}" alt="Kisomo">
+      </a>
+
+      <nav class="kisomo-shell__nav">
+        <div class="kisomo-shell__nav-primary">
+          <a class="kisomo-shell__nav-item{% if request.resolver_match.url_name == 'dashboard' %} kisomo-shell__nav-item--active{% endif %}" href="{% url 'dashboard' %}">
+            <span class="material-icons" aria-hidden="true">dashboard</span>
+            <span>Dashboard</span>
+          </a>
+        </div>
+
+        <section class="kisomo-shell__nav-section" aria-labelledby="configuration-label">
+          <h2 id="configuration-label">
+            <span class="kisomo-shell__section-icon" aria-hidden="true">
+              <span class="material-icons">construction</span>
+            </span>
+            <span>Configuration</span>
+          </h2>
+          <a class="kisomo-shell__nav-item{% if request.resolver_match.url_name == 'users-roles' %} kisomo-shell__nav-item--active{% endif %}" href="{% url 'users-roles' %}">
+            <span class="material-icons" aria-hidden="true">manage_accounts</span>
+            <span>Users &amp; Roles</span>
+          </a>
+        </section>
+      </nav>
+    </aside>
+
+    <div class="kisomo-shell__main">
+      <header class="kisomo-shell__topbar">
+        <div class="kisomo-shell__title-row">
+          <button class="kisomo-shell__drawer-toggle" type="button" aria-label="Minimize side navigation" data-kisomo-drawer-toggle>
+            <span class="material-icons" aria-hidden="true">menu</span>
+          </button>
+          <div class="kisomo-shell__title-group">
+            <nav class="kisomo-shell__breadcrumbs" aria-label="Breadcrumb">
+              {% block breadcrumbs %}
+                <a href="{% url 'dashboard' %}">Dashboard</a>
+              {% endblock %}
+            </nav>
+          <h1>{% block shell_title %}Dashboard{% endblock %}</h1>
+          </div>
+        </div>
+        <div class="kisomo-shell__actions" aria-label="Account actions">
+          <button class="kisomo-shell__icon-button" type="button" aria-label="Notifications">
+            <span class="material-icons" aria-hidden="true">notifications</span>
+            <span class="kisomo-shell__notification-dot" aria-hidden="true"></span>
+          </button>
+
+          <details class="kisomo-shell__account-menu">
+            <summary aria-label="Open account menu">
+              <span class="kisomo-shell__avatar" aria-hidden="true">
+                {{ request.user.email|first|upper }}
+              </span>
+              <span class="kisomo-shell__account-text">
+                <strong>{{ request.user.get_full_name|default:request.user.email }}</strong>
+                <small>{{ request.user.email }}</small>
+              </span>
+              <span class="material-icons" aria-hidden="true">expand_more</span>
+            </summary>
+            <div class="kisomo-shell__menu-panel">
+              <a href="{% url 'password_change' %}">
+                <span class="material-icons" aria-hidden="true">lock_reset</span>
+                <span>Change Password</span>
+              </a>
+              <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button type="submit">
+                  <span class="material-icons" aria-hidden="true">logout</span>
+                  <span>Sign Out</span>
+                </button>
+              </form>
+            </div>
+          </details>
+        </div>
+      </header>
+
+      <main class="kisomo-shell__content">
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+  </div>
+{% endblock %}

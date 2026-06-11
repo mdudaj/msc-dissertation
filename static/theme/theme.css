@@ -1,0 +1,63 @@
+@import url('/static/theme/vars.css');
+
+html, body { height: 100%; }
+body{
+  font-family: var(--font-sans);
+  background:
+    radial-gradient(1200px 800px at 12% 8%, rgba(244,197,66,0.06) 0%, rgba(11,110,110,0.03) 60%),
+    url('/static/img/auth-background.png') center / cover no-repeat,
+    var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* hero layout */
+.auth-hero{
+  display:flex;
+  align-items:center;
+  min-height:100vh;
+  gap:clamp(16px,4vw,48px);
+  padding:clamp(24px,4vw,64px);
+  box-sizing:border-box;
+}
+
+.auth-hero__panel{
+  width:min(480px,42%);
+  background:var(--surface);
+  padding:32px;
+  border-radius:var(--radius);
+  box-shadow:0 20px 40px rgba(11,46,60,0.06);
+  box-sizing:border-box;
+}
+
+.auth-hero__illustration{
+  flex:1;
+  background-image: url('/static/img/kisomo-hero-muted.png');
+  background-repeat:no-repeat;
+  background-position: center right;
+  background-size: min(72%, 760px) auto;
+  min-height:min(72vh,760px);
+  opacity: var(--hero-opacity);
+  pointer-events:none;
+}
+
+.auth-login__brand{ text-align:left; margin-bottom:18px; }
+.auth-login__title{ font-size:28px; font-weight:800; color:var(--secondary); margin:0 0 8px; }
+.auth-login__subtitle{ color:var(--muted); margin:0 0 18px; }
+
+.input-shell{ display:flex; align-items:center; gap:10px; padding:10px 12px; border:1px solid #E6EEF0; border-radius:10px; background:#FFF; }
+.input-shell:focus-within{ box-shadow:0 0 0 4px rgba(11,110,110,0.08); border-color:var(--primary); }
+
+.btn{ display:inline-flex; align-items:center; justify-content:center; gap:10px; min-height:48px; padding:0 18px; border-radius:10px; border:0; cursor:pointer; font-weight:700; }
+
+.btn-primary{ background:linear-gradient(180deg,var(--primary),var(--secondary)); color:#fff; box-shadow:0 10px 24px rgba(11,110,110,0.16); }
+.btn-google{ background:#fff; border:1px solid #E6EEF0; color:var(--text); }
+
+:focus{ outline: 3px solid rgba(20,98,98,0.12); outline-offset:3px; }
+
+@media (max-width:800px){
+  .auth-hero{ flex-direction:column; padding:20px; }
+  .auth-hero__panel{ width:100%; max-width:640px; }
+  .auth-hero__illustration{ display:none; }
+}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page_body %}
+  <main class="kisomo-simple-page">
+    <section class="kisomo-card kisomo-card--narrow">
+      <h1>{% trans "Sign in cancelled" %}</h1>
+      <p>{% trans "The Google sign-in flow was cancelled before access was granted." %}</p>
+      <a class="kisomo-button" href="{% url 'login' %}">{% trans "Return to sign in" %}</a>
+    </section>
+  </main>
+{% endblock %}

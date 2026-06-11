@@ -1,0 +1,47 @@
+{% extends "viewflow/base.html" %}
+{% load static %}
+
+{% block title %}Kisomo | Create Account{% endblock %}
+
+{% block favicon %}
+  <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+{% endblock %}
+
+{% block extrahead %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'dissertation/auth/auth.css' %}" data-turbo-track="reload">
+{% endblock %}
+
+{% block body %}
+  <main class="kisomo-auth" aria-label="Create account">
+    <section class="kisomo-auth__panel" aria-labelledby="invite-title">
+      <div class="kisomo-auth__brand">
+        <img class="kisomo-auth__logo" src="{% static 'img/kisomo-brand.png' %}" alt="Kisomo">
+        <p class="kisomo-auth__eyebrow">{{ role_label }}</p>
+        <h1 id="invite-title" class="kisomo-auth__title">Create Account</h1>
+        <p class="kisomo-auth__subtitle">{{ invitation.email }}</p>
+      </div>
+
+      <form class="kisomo-auth__local-form" method="post" novalidate>
+        {% csrf_token %}
+        {% if form.non_field_errors %}
+          <div class="kisomo-auth__notice kisomo-auth__notice--error" role="alert">
+            {{ form.non_field_errors }}
+          </div>
+        {% endif %}
+        <label class="kisomo-auth__field" for="{{ form.new_password1.id_for_label }}">
+          <span>Password</span>
+          {{ form.new_password1 }}
+          {% if form.new_password1.errors %}<small>{{ form.new_password1.errors }}</small>{% endif %}
+        </label>
+        <label class="kisomo-auth__field" for="{{ form.new_password2.id_for_label }}">
+          <span>Confirm Password</span>
+          {{ form.new_password2 }}
+          {% if form.new_password2.errors %}<small>{{ form.new_password2.errors }}</small>{% endif %}
+        </label>
+        <button class="kisomo-auth__local-submit" type="submit">Create Account</button>
+      </form>
+    </section>
+    <aside class="kisomo-auth__visual" aria-hidden="true"></aside>
+  </main>
+{% endblock %}

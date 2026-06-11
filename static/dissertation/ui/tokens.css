@@ -1,0 +1,41 @@
+:root {
+  --kisomo-font-family: Inter, "Noto Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  --kisomo-font-size-sm: 12px;
+  --kisomo-font-size-md: 14px;
+  --kisomo-font-size-lg: 16px;
+  --kisomo-font-size-xl: 22px;
+  --kisomo-line-height: 1.5;
+
+  --kisomo-space-1: 4px;
+  --kisomo-space-2: 8px;
+  --kisomo-space-3: 12px;
+  --kisomo-space-4: 16px;
+  --kisomo-space-5: 20px;
+  --kisomo-space-6: 24px;
+  --kisomo-space-7: 32px;
+
+  --kisomo-radius-sm: 4px;
+  --kisomo-radius-md: 8px;
+  --kisomo-radius-lg: 12px;
+
+  --kisomo-color-page: #f5faf9;
+  --kisomo-color-page-alt: #edf6f5;
+  --kisomo-color-surface: #ffffff;
+  --kisomo-color-surface-muted: #f7fbfb;
+  --kisomo-color-border: #d6e4e5;
+  --kisomo-color-border-strong: #afc9cf;
+  --kisomo-color-text: #08243f;
+  --kisomo-color-text-muted: #596d79;
+  --kisomo-color-primary: #0b4f76;
+  --kisomo-color-primary-soft: #e8f2f7;
+  --kisomo-color-secondary: #0b6e6e;
+  --kisomo-color-secondary-soft: #e5f5f2;
+  --kisomo-color-accent: #f4c542;
+  --kisomo-color-accent-soft: #fff8df;
+  --kisomo-color-danger: #b3261e;
+  --kisomo-color-danger-soft: #fff2f2;
+
+  --kisomo-shadow-surface: 0 16px 40px rgba(8, 36, 63, 0.12);
+  --kisomo-shadow-soft: 0 8px 22px rgba(8, 36, 63, 0.08);
+  --kisomo-focus-ring: 0 0 0 3px rgba(11, 110, 110, 0.22);
+}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page_body %}
+  <main class="kisomo-simple-page">
+    <section class="kisomo-card kisomo-card--narrow">
+      <h1>{% trans "Signed out" %}</h1>
+      <p>{% trans "You have signed out of Kisomo." %}</p>
+      <a class="kisomo-button" href="{% url 'login' %}">{% trans "Sign in again" %}</a>
+    </section>
+  </main>
+{% endblock %}

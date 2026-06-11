@@ -1,0 +1,64 @@
+{% extends "viewflow/base.html" %}
+{% load i18n static %}
+
+{% block title %}Kisomo | Sign in{% endblock %}
+
+{% block favicon %}
+  <link rel="icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+{% endblock %}
+
+{% block extrahead %}
+  {{ block.super }}
+  <link rel="stylesheet" href="{% static 'dissertation/auth/auth.css' %}" data-turbo-track="reload">
+{% endblock %}
+
+{% block body %}
+  <main class="kisomo-auth" aria-label="{% trans 'Secure sign in' %}">
+    <section class="kisomo-auth__panel" aria-labelledby="signin-title">
+      <div class="kisomo-auth__brand">
+        <img class="kisomo-auth__logo" src="{% static 'img/kisomo-brand.png' %}" alt="Kisomo">
+        <p class="kisomo-auth__eyebrow">Dissertation Research Platform</p>
+        <h1 id="signin-title" class="kisomo-auth__title">Sign in to Kisomo</h1>
+        <p class="kisomo-auth__subtitle">
+          Curriculum-aligned STEM media experimentation, artifact review, and feasibility evidence.
+        </p>
+      </div>
+
+      {% if messages %}
+        <div class="kisomo-auth__notice" role="status">
+          {% for message in messages %}<p>{{ message }}</p>{% endfor %}
+        </div>
+      {% endif %}
+      {% if form.non_field_errors %}
+        <div class="kisomo-auth__notice kisomo-auth__notice--error" role="alert">
+          {% for error in form.non_field_errors %}<p>{{ error }}</p>{% endfor %}
+        </div>
+      {% endif %}
+
+      <form class="kisomo-auth__local-form" method="post" novalidate>
+        {% csrf_token %}
+        <label class="kisomo-auth__field" for="{{ form.username.id_for_label }}">
+          <span>Email</span>
+          {{ form.username }}
+          {% if form.username.errors %}<small>{{ form.username.errors }}</small>{% endif %}
+        </label>
+        <label class="kisomo-auth__field" for="{{ form.password.id_for_label }}">
+          <span>Password</span>
+          {{ form.password }}
+          {% if form.password.errors %}<small>{{ form.password.errors }}</small>{% endif %}
+        </label>
+        <button class="kisomo-auth__local-submit" type="submit">Sign In</button>
+      </form>
+
+      <div class="kisomo-auth__divider"><span>or</span></div>
+
+      <a class="kisomo-auth__google" href="{% url 'google_login' %}" aria-label="Sign in with Google">
+        <img src="{% static 'img/google-mark.png' %}" alt="" aria-hidden="true">
+        <span>Sign in with Google</span>
+      </a>
+
+    </section>
+
+    <aside class="kisomo-auth__visual" aria-hidden="true"></aside>
+  </main>
+{% endblock %}

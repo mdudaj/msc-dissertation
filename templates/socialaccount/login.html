@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block page_body %}
+  <main class="kisomo-simple-page">
+    <section class="kisomo-card kisomo-card--narrow">
+      <h1>{% trans "Continue sign in" %}</h1>
+      <p>{% trans "You are being redirected to the selected identity provider." %}</p>
+      <form method="post">
+        {% csrf_token %}
+        <button class="kisomo-button" type="submit">{% trans "Continue" %}</button>
+      </form>
+    </section>
+  </main>
+{% endblock %}

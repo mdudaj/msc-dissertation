@@ -1,0 +1,455 @@
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0) 220px),
+    linear-gradient(180deg, var(--kisomo-color-page), var(--kisomo-color-page-alt));
+}
+
+.kisomo-shell {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  overflow: hidden;
+  transition: grid-template-columns 160ms ease;
+}
+
+.kisomo-shell--collapsed {
+  grid-template-columns: 76px minmax(0, 1fr);
+}
+
+.kisomo-shell__sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: #132737;
+  color: #eaf5f7;
+}
+
+.kisomo-shell__brand {
+  display: flex;
+  align-items: center;
+  min-height: 64px;
+  padding: 0 22px;
+  background: var(--kisomo-color-primary);
+  color: #fff;
+  text-decoration: none;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.kisomo-shell__brand img {
+  width: 132px;
+  height: auto;
+  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.18));
+  transition: width 160ms ease;
+}
+
+.kisomo-shell--collapsed .kisomo-shell__brand {
+  justify-content: center;
+  padding: 0 10px;
+}
+
+.kisomo-shell--collapsed .kisomo-shell__brand img {
+  width: 52px;
+}
+
+.kisomo-shell__nav {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 18px 14px;
+}
+
+.kisomo-shell__nav-primary {
+  display: grid;
+  gap: 8px;
+}
+
+.kisomo-shell__nav-section {
+  display: grid;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.kisomo-shell__nav-section h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0 10px;
+  color: #9fb8c4;
+  font-size: 11px;
+  font-weight: 850;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.kisomo-shell__section-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid rgba(215, 167, 44, 0.38);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(244, 197, 66, 0.18), rgba(215, 167, 44, 0.08)),
+    rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  flex: 0 0 auto;
+}
+
+.kisomo-shell__section-icon .material-icons {
+  color: #f4c542;
+  font-size: 19px;
+  line-height: 1;
+  transform: rotate(-18deg);
+  text-shadow: 0 1px 8px rgba(244, 197, 66, 0.38);
+}
+
+.kisomo-shell__nav-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 8px;
+  color: #d9e8ed;
+  text-decoration: none;
+  font-weight: 750;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.kisomo-shell__nav-item:hover,
+.kisomo-shell__nav-item:focus-visible {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.kisomo-shell__nav-item--active {
+  background: linear-gradient(90deg, rgba(11, 110, 110, 0.92), rgba(11, 79, 118, 0.62));
+  box-shadow: inset 4px 0 0 var(--kisomo-color-accent);
+}
+
+.kisomo-shell__nav-item .material-icons {
+  font-size: 21px;
+}
+
+.kisomo-shell--collapsed .kisomo-shell__nav {
+  padding: 18px 10px;
+}
+
+.kisomo-shell--collapsed .kisomo-shell__nav-item {
+  justify-content: center;
+  padding: 0;
+}
+
+.kisomo-shell--collapsed .kisomo-shell__nav-item span:not(.material-icons),
+.kisomo-shell--collapsed .kisomo-shell__nav-section h2 {
+  display: none;
+}
+
+.kisomo-shell--collapsed .kisomo-shell__nav-section {
+  padding-top: 12px;
+}
+
+.kisomo-shell__main {
+  min-width: 0;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 64px minmax(0, 1fr);
+  overflow: hidden;
+}
+
+.kisomo-shell__topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 0 16px;
+  background: var(--kisomo-color-primary);
+  color: #fff;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 8px 20px rgba(8, 36, 63, 0.12);
+  box-sizing: border-box;
+}
+
+.kisomo-shell__topbar h1 {
+  margin: 0;
+}
+
+.kisomo-shell__title-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.kisomo-shell__drawer-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  cursor: pointer;
+}
+
+.kisomo-shell__drawer-toggle:hover,
+.kisomo-shell__drawer-toggle:focus-visible {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.kisomo-shell__title-group {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+}
+
+.kisomo-shell__breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 12px;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+.kisomo-shell__breadcrumbs a {
+  color: rgba(255, 255, 255, 0.76);
+  text-decoration: none;
+}
+
+.kisomo-shell__breadcrumbs a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.kisomo-shell__topbar h1 {
+  color: #fff;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.kisomo-shell__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.kisomo-shell__icon-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.82);
+  cursor: pointer;
+}
+
+.kisomo-shell__icon-button:hover,
+.kisomo-shell__icon-button:focus-visible {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.kisomo-shell__icon-button .material-icons {
+  font-size: 21px;
+}
+
+.kisomo-shell__notification-dot {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid var(--kisomo-color-primary);
+  border-radius: 50%;
+  background: var(--kisomo-color-accent);
+}
+
+.kisomo-shell__account-menu {
+  position: relative;
+}
+
+.kisomo-shell__account-menu summary {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 8px;
+  border-radius: 6px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  list-style: none;
+}
+
+.kisomo-shell__account-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.kisomo-shell__account-menu summary:hover,
+.kisomo-shell__account-menu summary:focus-visible,
+.kisomo-shell__account-menu[open] summary {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.kisomo-shell__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--kisomo-color-accent);
+  color: #533f05;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.kisomo-shell__account-text {
+  display: grid;
+  gap: 1px;
+  min-width: 0;
+  max-width: 220px;
+}
+
+.kisomo-shell__account-text strong,
+.kisomo-shell__account-text small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.kisomo-shell__account-text strong {
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+.kisomo-shell__account-text small {
+  color: rgba(255, 255, 255, 0.66);
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.kisomo-shell__menu-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  z-index: 10;
+  display: grid;
+  min-width: 220px;
+  padding: 8px;
+  border: 1px solid var(--kisomo-color-border);
+  border-radius: var(--kisomo-radius-md);
+  background: #fff;
+  box-shadow: var(--kisomo-shadow-surface);
+}
+
+.kisomo-shell__menu-panel a,
+.kisomo-shell__menu-panel button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 38px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--kisomo-color-text);
+  box-sizing: border-box;
+  font: inherit;
+  font-weight: 750;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.kisomo-shell__menu-panel .material-icons {
+  color: var(--kisomo-color-text-muted);
+  font-size: 20px;
+}
+
+.kisomo-shell__menu-panel a:hover,
+.kisomo-shell__menu-panel button:hover,
+.kisomo-shell__menu-panel a:focus-visible,
+.kisomo-shell__menu-panel button:focus-visible {
+  background: var(--kisomo-color-surface-muted);
+}
+
+.kisomo-shell__content {
+  min-width: 0;
+  min-height: 0;
+  overflow: auto;
+}
+
+@media (max-width: 860px) {
+  body {
+    overflow: auto;
+  }
+
+  .kisomo-shell {
+    grid-template-columns: 1fr;
+    min-height: 100vh;
+    height: auto;
+    overflow: visible;
+  }
+
+  .kisomo-shell__sidebar {
+    height: auto;
+    overflow: visible;
+  }
+
+  .kisomo-shell__nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: grid;
+    gap: 8px;
+  }
+
+  .kisomo-shell__nav-section {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .kisomo-shell__main {
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    grid-template-rows: auto minmax(0, 1fr);
+  }
+
+  .kisomo-shell__topbar {
+    min-height: 64px;
+    flex-wrap: wrap;
+    padding: 14px 18px;
+  }
+
+  .kisomo-shell__content {
+    overflow: visible;
+  }
+
+  .kisomo-shell__account-text {
+    display: none;
+  }
+}

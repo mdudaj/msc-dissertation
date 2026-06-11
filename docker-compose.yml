@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: dissertation
+      POSTGRES_USER: dissertation
+      POSTGRES_PASSWORD: dissertation
+    ports:
+      - "15432:5432"
+    volumes:
+      - dissertation_postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    ports:
+      - "16379:6379"
+
+volumes:
+  dissertation_postgres_data:
